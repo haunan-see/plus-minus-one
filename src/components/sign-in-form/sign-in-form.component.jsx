@@ -1,7 +1,10 @@
 import { useState } from "react";
 
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import GoogleIcon from '@mui/icons-material/Google';
+import LoginIcon from '@mui/icons-material/Login';
 
 import {
   signInWithGooglePopup,
@@ -82,10 +85,12 @@ const SignInForm = () => {
           value={password}
         />
         <div className="buttons-container">
-          <Button type="submit">Sign In</Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
-            Google sign in
-          </Button>
+          <Stack spacing={2} direction="row">
+            <Button type="submit" variant="outlined" endIcon={<LoginIcon />}>sign in</Button>
+            <Button variant="contained" color="info" endIcon={<GoogleIcon />} onClick={signInWithGoogle}>
+              sign in with
+            </Button>
+          </Stack>
         </div>
       </form>
     </div>
