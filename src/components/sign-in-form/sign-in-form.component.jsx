@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import FormInput from "../form-input/form-input.component";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import GoogleIcon from '@mui/icons-material/Google';
 import LoginIcon from '@mui/icons-material/Login';
+
+import { UserContext } from "../contexts/user.context"
 
 import {
   signInWithGooglePopup,
@@ -23,6 +25,8 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
+  const { setCurrentUser } = useContext(UserContext);
+
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -40,7 +44,8 @@ const SignInForm = () => {
         email,
         password
       );
-      console.log(response);
+
+      setCurrentUser(response.user);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
