@@ -1,12 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import FormInput from "../form-input/form-input.component";
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import GoogleIcon from '@mui/icons-material/Google';
-import LoginIcon from '@mui/icons-material/Login';
-
-import { UserContext } from "../contexts/user.context"
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import GoogleIcon from "@mui/icons-material/Google";
+import LoginIcon from "@mui/icons-material/Login";
 
 import {
   signInWithGooglePopup,
@@ -18,14 +16,12 @@ import "./sign-in-form.styles.scss";
 
 const defaultFormFields = {
   email: "",
-  password: ""
+  password: "",
 };
 
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
-  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -40,12 +36,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      setCurrentUser(response.user);
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
@@ -91,8 +82,15 @@ const SignInForm = () => {
         />
         <div className="buttons-container">
           <Stack spacing={2} direction="row">
-            <Button type="submit" variant="outlined" endIcon={<LoginIcon />}>sign in</Button>
-            <Button variant="contained" color="info" endIcon={<GoogleIcon />} onClick={signInWithGoogle}>
+            <Button type="submit" variant="outlined" endIcon={<LoginIcon />}>
+              sign in
+            </Button>
+            <Button
+              variant="contained"
+              color="info"
+              endIcon={<GoogleIcon />}
+              onClick={signInWithGoogle}
+            >
               sign in with
             </Button>
           </Stack>
