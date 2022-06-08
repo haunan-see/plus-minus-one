@@ -1,9 +1,9 @@
 import { Fragment, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { ReactComponent as Logo } from "../../../assets/logo.svg";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
 
-import { UserContext } from "../../contexts/user.context";
-import { signOutUser } from "../../../utilities/firebase/firebase.utilities"
+import { UserContext } from "../../contexts/user.context"; 
+import { signOutUser } from "../../utilities/firebase/firebase.utilities"
 
 import "./navigation.styles.scss";
 
