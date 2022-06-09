@@ -16,12 +16,12 @@
     margin: 50px auto;
   }
 
-  // .cart-items {
-  //   height: 340px;
-  //   display: flex;
-  //   flex-direction: column;
-  //   overflow: scroll;
-  // }
+  .cart-items {
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
 
   Button {
     margin-top: auto;
